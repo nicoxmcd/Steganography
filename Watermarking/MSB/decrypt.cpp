@@ -22,10 +22,9 @@ Mat extractImageMSB(const Mat &carrier, int width, int height) {
 int main() {
     // Load the carrier and secret images in grayscale
     Mat carrier = imread("carrier_image.jpg", IMREAD_GRAYSCALE);
-    Mat secret = imread("secret_image.jpg", IMREAD_GRAYSCALE);
 
-    if (carrier.empty() || secret.empty()) {
-        cout << "Error loading images!" << endl;
+    if (carrier.empty()) {
+        cout << "Error loading image! Check file and path name again!" << endl;
         return -1;
     }
 
@@ -33,6 +32,6 @@ int main() {
     Mat extracted = extractImageMSB(carrier, carrier.cols, carrier.rows);
     imwrite("extracted_image_msb.jpg", extracted);
 
-    cout << "MSB .jpg  Decrypted" << endl;
+    cout << "MSB decrypted and saved as extracted_image_msb.jpg" << endl;
     return 0;
 }
