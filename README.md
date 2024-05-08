@@ -32,5 +32,5 @@ g++ -o steganography $FileName.cpp `pkg-config --cflags --libs opencv4`
 **Run**
 Replace the path and file name for whichever program you will use:
 ```
-.$FileName
+./$FileName
 ```
