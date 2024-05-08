@@ -14,7 +14,6 @@ For our tutorial, we provide images because they need to be the same size and ty
 [**Install g++ Compiler**](https://code.visualstudio.com/docs/cpp/config-mingw)
 You must have a g++ compiler to compile this code. I followed this tutorial from VSC.
 
-
 **Clone the Repo**
 ```
 git clone https://github.com/nicomcd/Steganography.git
