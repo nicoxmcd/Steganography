@@ -41,5 +41,5 @@ Replace the path and file name for whichever program you will use:
 ./$FileName
 ```
 Ctrl+Shift+P -> edit config UI
-![image](https://github.com/nicomcd/Steganography/assets/35404943/c0e511bf-9633-4767-9a73-ca3b27ddac4e)
+![image](https://github.com/nicomcd/Steganography/assets/35404943/937466a6-6152-4a88-87a6-a2edcf11ec53)
 
