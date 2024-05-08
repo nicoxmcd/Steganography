@@ -5,39 +5,39 @@ using namespace cv;
 using namespace std;
 
 // Embed secret image in host image using MSB 
-void embedImageMSB(Mat &carrier, const Mat &secret) {
+void embedImageMSB(Mat &host, const Mat &secret) {
     // Both images should be same size and height
-    if (carrier.size() != secret.size() || carrier.type() != secret.type()) {
+    if (host.size() != secret.size() || host.type() != secret.type()) {
         cout << "Try again :(  \n Both images should be same size and height" << endl;
         return;
     }
     // Iterate over each pixel
-    for (int i = 0; i < carrier.rows; i++) {
-        for (int j = 0; j < carrier.cols; j++) {
+    for (int i = 0; i < host.rows; i++) {
+        for (int j = 0; j < host.cols; j++) {
             // Clear the MSB of each pixel in the host image
-            carrier.at<uchar>(i, j) &= 0x7F; // 0x7F is 01111111 in binary
+            host.at<uchar>(i, j) &= 0x7F; // 0x7F is 01111111 in binary
             // Set the most significant bit to the MSB of the secret image
-            carrier.at<uchar>(i, j) |= (secret.at<uchar>(i, j) & 0x80);
+            host.at<uchar>(i, j) |= (secret.at<uchar>(i, j) & 0x80);
         }
     }
 }
 
 int main() {
-    // Load the carrier and secret images in grayscale
-    Mat carrier = imread("carrier_image.jpg", IMREAD_GRAYSCALE);
-    Mat secret = imread("secret_image.jpg", IMREAD_GRAYSCALE);
+    // Load the host and secret images in grayscale
+    Mat host = imread("src/banana.jpg", IMREAD_GRAYSCALE);
+    Mat secret = imread("src/train.jpg", IMREAD_GRAYSCALE);
 
-    if (carrier.empty() || secret.empty()) {
+    if (host.empty() || secret.empty()) {
         cout << "Error loading images :(  Check the path to images and file names again!" << endl;
         return -1;
     }
 
-    // Embed the secret image into the carrier
-    embedImageMSB(carrier, secret);
+    // Embed the secret image into the host
+    embedImageMSB(host, secret);
 
     // Save the stego-image
-    imwrite("stego_image_msb.jpg", carrier);
+    imwrite("MSB_encrypted.jpg", host);
   
-    cout << "MSB encrypted and saved as stego_image_msb.jpg!" << endl;
+    cout << "MSB encrypted and saved as MSB_encrypted.jpg!" << endl;
     return 0;
 }
