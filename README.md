@@ -11,9 +11,13 @@ Watermarking faces various threats, including active attacks aimed at removing o
 ## Tutorial
 For our tutorial, we provide images because they need to be the same size and type for the program to run successfully. They are 500x500px and are .jpg, you can make your own images using some photo editing software and uploading it to the src folder and adding to the switch case in the encrypt.cpp for either LSB or MSB. 
 
-**Install g++ Compiler**
-[Setup for g++](https://code.visualstudio.com/docs/cpp/config-mingw)\n
-You must have a g++ compiler to compile this code. I followed this tutorial from VSC.
+**Opt. Install g++ Compiler**
+[Setup for g++](https://code.visualstudio.com/docs/cpp/config-mingw)
+You must have a g++ compiler to compile this code. I followed this tutorial from VSC, however, if you already have it then you can skip this step.
+
+**Environment Variables**
+You need to have opencv installed on your machine in the C: directory and have followed the exact steps from the Professor's instructions in our previous assignment. For this project I am using Visual Studio Code instead of the Visual Studio 2022 software, for one of the headers we are using I also had to add another Path to the user's environment variables.
+```C:\opencv\build\include\opencv2```
 
 **Clone the Repo**
 ```
