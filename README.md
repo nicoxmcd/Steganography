@@ -40,7 +40,7 @@ cd Watermarking/MSB
 **Compliation**
 Replace the file name with the file you are going to use:
 ```
-g++ -o steganography $FileName.cpp `pkg-config --cflags --libs opencv4`
+g++ -o steganography encrypt.cpp -IC:/opencv/build/include -LC:/opencv/build/x64/vc15/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_imgcodecs
 ```
 
 **Run**
