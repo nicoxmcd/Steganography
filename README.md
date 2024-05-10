@@ -13,7 +13,7 @@ Watermarking faces various threats, including active attacks aimed at removing o
 For our tutorial, we provide images because they need to be the same size and type for the program to run successfully. They are 500x500px and are .jpg, you can make your own images using some photo editing software and uploading it to the src folder and adding to the switch case in the encrypt.cpp for either LSB or MSB. 
 
 ### Opt. Install g++ Compiler
----
+
 [Setup for g++](https://code.visualstudio.com/docs/cpp/config-mingw)
 You must have a g++ compiler to compile this code. I followed this tutorial from VSC, however, if you already have it then you can skip this step.
 
