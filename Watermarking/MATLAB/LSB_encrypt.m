@@ -20,9 +20,9 @@ function watermarked_image = embed_watermark(original_image, watermark_image, ke
     encrypted_watermark = xor(watermark_bin, 0201);
     
     % Embed the encrypted watermark into the original image
-    watermarked_image = orig_img;
-    watermarked_image(:,:,1) = bitset(watermarked_image(:,:,1), 1, encrypted_watermark);
+    watermarkedLSB_image = orig_img;
+    watermarkedLSB_image(:,:,1) = bitset(watermarkedLSB_image(:,:,1), 1, encrypted_watermark);
     
     % Save the watermarked image
-    imwrite(watermarked_image, 'watermarked_image.png');
+    imwrite(watermarkedLSB_image, 'watermarkedLSB_image.png');
 end
