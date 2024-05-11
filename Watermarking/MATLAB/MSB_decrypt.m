@@ -1,28 +1,16 @@
-function watermarked_image = embed_watermark(original_image, watermark_image, key)
-    % Read the original and watermark images
-    orig_img = imread("duck.jpg");
-    watermark = imread("stevens.png");
+function extracted_watermark = extract_watermark(watermarked_image_path, key)
+    % Read the watermarked image
+    watermarked_img = imread("watermarkedMSB_image.png");
     
-    % Resize watermark to match the original image size
-    watermark = imresize(watermark, size(orig_img(:,:,1)));
+    % Extract the MSB from the watermarked image where the watermark was embedded
+    msb = bitget(watermarked_img(:,:,1), 8);
     
-    % Check if the watermark image is RGB, and convert it to grayscale
-    if size(watermark, 3) == 3
-        watermark_gray = rgb2gray(watermark);
-    else
-        watermark_gray = watermark; % If the image is already in grayscale
-    end
-
-    % Convert watermark to binary
-    watermark_bin = imbinarize(watermark_gray);
+    % Decrypt the watermark using the same XOR operation as used in embedding
+    decrypted_watermark = xor(msb, 0201);
     
-    % Encrypt the watermark using a simple XOR operation
-    encrypted_watermark = xor(watermark_bin, 0201);
+    % Convert the binary data back to an image
+    extracted_watermark = uint8(decrypted_watermark * 255);
     
-    % Embed the encrypted watermark into the original image
-    watermarked_image = orig_img;
-    watermarked_image(:,:,1) = bitset(watermarked_image(:,:,1), 8, encrypted_watermark);
-    
-    % Save the watermarked image
-    imwrite(watermarked_image, 'watermarkedMSB_image.png');
+    % Save the extracted watermark
+    imwrite(extracted_watermark, 'extracted_watermarkMSB.png');
 end
